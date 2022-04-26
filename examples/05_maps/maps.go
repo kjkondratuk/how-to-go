@@ -19,4 +19,13 @@ func main() {
 	myMap["key23"] = 273
 
 	fmt.Printf("map: %v\n", myMap)
+
+	// see if a map has a value
+	if _, found := myMap["skdf"]; found {
+		fmt.Println("skdf was in the map!")
+	}
+
+	if _, found := myMap["key29"]; found {
+		fmt.Println("key29 was in the map!")
+	}
 }
