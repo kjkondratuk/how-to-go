@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// MyType is an interface with an IsLess method
 type MyType interface {
 	IsLess(i int) bool
 }
@@ -56,6 +57,7 @@ func main() {
 	}
 
 	// methods available are limited to the scoped type (MyType for arr)
+	// if we tried to call IsMore here, or reference the value attribute, we wouldn't be able to
 	for i, v := range arr {
 		if v.IsLess(vals[i]) {
 			fmt.Printf("%d is Less than %d\n", v, vals[i])

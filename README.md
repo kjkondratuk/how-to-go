@@ -34,3 +34,9 @@ a simple command-line application.
 ## Challenge
 
 Create a command line application that...
+
+## Upcoming Topics
+
+Topics which were considered for this, but will probably wind up in a future iteration of this:
+* Concurrency
+* 
