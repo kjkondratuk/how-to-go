@@ -19,5 +19,9 @@ Then, check out the repo to the following directory:
 ## So, what's next?
 
 First, let's review the basics of the language by browsing the [examples folder](./examples) to better
-understand the basics of the language, then let's move on to the following challenge and build
+understand the basics of the language, then let's move on to the challenge below and build
 a simple command-line application.
+
+## Challenge
+
+Create a command line application

@@ -19,9 +19,12 @@ func main() {
 	}
 	fmt.Printf("Second total was %d\n", total2)
 
-	// attach a function
-
 	// call an attached function
+	s := someStruct{43}
+	s.AddNumbers(3)
+	s.AddNumbers(14, 34)
+
+	fmt.Printf("Accumulator value: %d\n", )
 }
 
 func addNumbers(param1 string, param2 int) (int, error) {
@@ -30,4 +33,18 @@ func addNumbers(param1 string, param2 int) (int, error) {
 		return 0, err
 	}
 	return val + param2, nil
+}
+
+type someStruct struct {
+	value int
+}
+
+// attach a function to the struct
+
+// AddNumbers : adds all the numbers specified to the struct value
+func (s someStruct) AddNumbers(p2 ...int) int {
+	for _, v := range p2 {
+		s.value += v
+	}
+	return s.value
 }
