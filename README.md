@@ -24,4 +24,4 @@ a simple command-line application.
 
 ## Challenge
 
-Create a command line application
+Create a command line application that...
