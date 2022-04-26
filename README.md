@@ -16,6 +16,15 @@ Then, check out the repo to the following directory:
 
 **Note** : if you forked the repo, you may have to replace `kjkondratuk` with your username.
 
+## Running examples
+
+All example code is located under `./examples` and organized into folders to facilitate simple building.
+To execute any of the example code simply execute the following in a directory with a source file:
+```text
+go run <go file>
+```
+This will compile and execute the specified program.
+
 ## So, what's next?
 
 First, let's review the basics of the language by browsing the [examples folder](./examples) to better

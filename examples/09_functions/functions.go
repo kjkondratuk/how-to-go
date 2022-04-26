@@ -15,18 +15,25 @@ func main() {
 
 	total2, err2 := addNumbers("sj", 4)
 	if err2 != nil {
-		fmt.Println("There was a problem adding sj and 4")
+		fmt.Printf("There was a problem adding sj and 4: %v\n", err2)
 	}
 	fmt.Printf("Second total was %d\n", total2)
 
 	// call an attached function
+	v := 0
 	s := someStruct{43}
-	s.AddNumbers(3)
-	s.AddNumbers(14, 34)
+	v = s.AddNumbersImmutable(3)
+	v = s.AddNumbersImmutable(14, 34)
+	fmt.Printf("Underlying accumulator value: %d\n", s.value)
+	fmt.Printf("External accumulator value: %d\n", v)
 
-	fmt.Printf("Accumulator value: %d\n", )
+	fmt.Printf("Underlying accumulator value: %d\n", s.value)
+	s.AddNumbersMutable(12, 22, 48)
+	fmt.Printf("Mutable accumulator value: %d\n", s.value)
 }
 
+// addNumbers: Adds a numeric string to a plain integer.  Returns an error if the string is incorrectly
+// formatted.
 func addNumbers(param1 string, param2 int) (int, error) {
 	val, err := strconv.Atoi(param1)
 	if err != nil {
@@ -42,7 +49,14 @@ type someStruct struct {
 // attach a function to the struct
 
 // AddNumbers : adds all the numbers specified to the struct value
-func (s someStruct) AddNumbers(p2 ...int) int {
+func (s someStruct) AddNumbersImmutable(p2 ...int) int {
+	for _, v := range p2 {
+		s.value += v
+	}
+	return s.value
+}
+
+func (s *someStruct) AddNumbersMutable(p2 ...int) int {
 	for _, v := range p2 {
 		s.value += v
 	}
