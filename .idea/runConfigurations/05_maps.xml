@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="05_maps" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="how-to-go" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="FILE" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/examples/05_maps/maps.go" />
+    <method v="2" />
+  </configuration>
+</component>
