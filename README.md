@@ -9,8 +9,11 @@ A companion repository to practice the basics of golang and get familiarized wit
 * [So, what's Next?](#So%2C%20what%27s%20Next%3F)
 * [Challenge](#Challenge)
   * [How?](#How%3F)
-  * [1 - Creating an HTTP Client](#1%20-%20Creating%20an%20HTTP%20Client)
-  * [2 - Parsing command-line arguments](#2%20-%20Parsing%20command-line%20arguments)
+    * [1 - Create an API Key](#1%20-%20Create%20an%20API%20Key)
+    * [2 - Check out the API Documentation](#2%20-%20Check%20out%20the%20API%20Documentation)
+      * [Geocoding API](#Geocoding%20API)
+      * [Current Weather API](#Current%20Weather%20API)
+    * [3 - Making the API Calls](#3%20-%20Making%20the%20API%20Calls)
 * [Upcoming Topics](#Upcoming%20Topics)
 
 ## Slides
@@ -55,19 +58,89 @@ format to the command line
 ### How?
 
 If you've reached this section and haven't yet reviewed the contents of the examples folder, please do so.  It will
-help you immensely in implementing this tool to have a basic understanding of the syntax Go uses.  If you have, pick a
-section below that you'd like to start with.  There will be a couple aspects to this solution:
-1. An HTTP client to send requests to the OpenWeatherAPI
-2. A command-line argument parser to get the user's location
+help you considerably in implementing this tool to have a basic understanding of the syntax Go uses. If you'd like to start
+by creating the HTTP client, we can simply hard-code parameter values for now, and add argument parsing later.  
+Likewise, if you want to start with argument parsing, you can do that and add the HTTP calls later.
 
-#### 1 - Creating an HTTP Client
+For the sake of time, I have included response models that can be used to unmarshal responses from the API, included 
+some examples of how to use the `http` standard library, and included a skeleton application that captures several
+arguments from the supplied program arguments.
+
+#### 1 - Create an API Key
+
+Before we get started, we should probably create an API key by registering for an account that will allow us to make
+requests to the OpenWeather API.  For our purposes, it will probably be easiest to use the Geocoding API to acquire 
+geographic coordinates and then use those coordinates to fetch the weather information.
+
+Once you are registered, locate your API key and paste it into a file called `.env`.  Our application will source the API
+key from this file.
+
+#### 2 - Check out the API Documentation
+
+##### Geocoding API
+Full documentation for the Geocoding API is available [here](https://openweathermap.org/api/geocoding-api).
+
+Minimally, we will have to supply the following values to the API to get a response:
+1. `q` - the query - formatted as `city,state_code,country_code`
+2. `appid` - your API key
+
+You should be able to unmarshal this response as follows into the provided [GeocodingResponse model](./model/response.go):
+```go
+    var geocodingResponse model.GeocodingResponse
+	all, err := ioutil.ReadAll(resp.Body)
+	// ... handle error ...
+	err = json.Unmarshal(all, &geocodingResponse)
+    // ... handle error ...
+```
+
+##### Current Weather API
+Full documentation for the Current Weather API is available [here](https://openweathermap.org/current).
+
+Minimally, we will have to supply the following values to the API to get a response:
+1. `lat` - the latitude for the corresponding weather information
+2. `lon` - the longitude for the correpsonding weather information
+3. `appid` - your API key
+
+You should be able to unmarshal this response as follows into the provided [WeatherResponse model](./model/response.go),
+similarly to how you did above with the `GeocodingResponse`.
+
+#### 3 - Making the API Calls
 
 Fortunately with Go it is very easy to create an HTTP client and make calls with it.  The official documentation on the
-topic can be found [here](https://pkg.go.dev/net/http).  
+topic can be found [here](https://pkg.go.dev/net/http).  But a simple example looks like this:
+```go
+    response, err := http.Get("http://my-application.com")
+	// close the body reader on completion, to free resources
+    if client != nil && client.Body != nil {
+        defer client.Body.Close()
+    }
+	// handle an error in issuing or receiving the request
+    if err != nil {
+        fmt.Println(err)
+        os.Exit(-1)
+    }
+```
 
-#### 2 - Parsing command-line arguments
+Making a request happens via the following general procedure:
+1. Issue the request to the specified URL
+2. `defer` the closure of the body, if applicable (see above)
+3. Handle any errors that arise during the request
+4. Unmarshal the response JSON to a go struct (refer to above details about the APIs for more info on this)
+5. Handle any errors that arise from the unmarshalling
+6. Use the returned struct!
 
+### What should my output look like?
 
+You can format your output however you'd like, but something like the following might be appropriate:
+```text
+--- Today's Weather ---
+ - Low: 34.049999
+ - High 46.619999
+ - Current: 38.799999
+ - Feels Like: 34.340000
+ - Humidity: 62%
+ - Pressure: 1031hPa
+```
 
 ## Upcoming Topics
 
