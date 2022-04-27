@@ -3,7 +3,7 @@ A companion repository to practice the basics of golang and get familiarized wit
 
 ## Table of Contents
 [Slides](#Slides)
-[How to use this repository](#How to use this repository)
+[How to use this repository](#How%20to%20use%20this%20repository)
 
 ## Slides
 
