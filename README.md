@@ -2,8 +2,16 @@
 A companion repository to practice the basics of golang and get familiarized with the go language.
 
 ## Table of Contents
-[Slides](#Slides)
-[How to use this repository](#How%20to%20use%20this%20repository)
+
+* [Slides](#Slides)
+* [How to use this repository](#How%20to%20use%20this%20repository)
+* [Running examples](#Running%20examples)
+* [So, what's Next?](#So%2C%20what%27s%20Next%3F)
+* [Challenge](#Challenge)
+  * [How?](#How%3F)
+  * [1 - Creating an HTTP Client](#1%20-%20Creating%20an%20HTTP%20Client)
+  * [2 - Parsing command-line arguments](#2%20-%20Parsing%20command-line%20arguments)
+* [Upcoming Topics](#Upcoming%20Topics)
 
 ## Slides
 
