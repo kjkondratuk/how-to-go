@@ -4,7 +4,7 @@
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/examples/13_testing/main.go" />
+    <filePath value="$PROJECT_DIR$/examples/13_testing/testing.go" />
     <method v="2" />
   </configuration>
 </component>
