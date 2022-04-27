@@ -14,6 +14,7 @@ A companion repository to practice the basics of golang and get familiarized wit
       * [Geocoding API](#Geocoding%20API)
       * [Current Weather API](#Current%20Weather%20API)
     * [3 - Making the API Calls](#3%20-%20Making%20the%20API%20Calls)
+* [The Solution](#The%20Solution)
 * [Upcoming Topics](#Upcoming%20Topics)
 
 ## Slides
@@ -38,7 +39,9 @@ To execute any of the example code simply execute the following in a directory w
 ```text
 go run <go file>
 ```
-This will compile and execute the specified program.
+This will compile and execute the specified program.  Alternatively, you can leverage the included `Makefile`.  To
+execute various build targets, or use the included IntelliJ/Goland run configurations (if you're using one of those IDEs)
+included in the `.idea` directory.
 
 ## So, what's next?
 
@@ -142,9 +145,15 @@ You can format your output however you'd like, but something like the following 
  - Pressure: 1031hPa
 ```
 
+## The Solution
+
+If at any point you find yourself irreversibly stuck, check out the `solution` branch of this repository for a working
+example.
+
 ## Upcoming Topics
 
 Topics which were considered for this workshop, but will probably wind up in a future iteration of this, or added later:
+* Common standard library APIs
 * Concurrency
 * Mocking
-* Common standard library APIs
+* Reflection
