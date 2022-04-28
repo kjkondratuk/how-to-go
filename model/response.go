@@ -1,5 +1,6 @@
 package model
 
+// GeocodingResponse : a type alias to a collection of locations
 type GeocodingResponse []Location
 
 type Location struct {
@@ -10,6 +11,7 @@ type Location struct {
 	Lon     float32
 }
 
+// WeatherResponse : a struct that represents a response from the OpenWeather Current Weather API
 type WeatherResponse struct {
 	Main Weather
 }
