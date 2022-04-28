@@ -154,6 +154,7 @@ example.
 
 Topics which were considered for this workshop, but will probably wind up in a future iteration of this, or added later:
 * Common standard library APIs
+* Error handling best practices
 * Concurrency
-* Mocking
+* Mocking / testify
 * Reflection
