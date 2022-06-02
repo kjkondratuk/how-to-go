@@ -12,29 +12,33 @@ func TestNewStack(t *testing.T) {
 }
 
 func TestStack_Pop_Push(t *testing.T) {
-	s := NewStack()
-
-	// should panic when there is nothing to pop, to make sure it's created empty
-	assertPanic(t, func() {
-		s.Pop()
+	t.Run("should panic when there is nothing to pop", func(tc *testing.T) {
+		s := NewStack()
+		assertPanic(t, func() {
+			s.Pop()
+		})
 	})
 
-	// Should pop single item
-	s.Push("some value")
-	s1 := s.Pop().(string)
-	if s1 != "some value" {
-		t.Errorf("The popped item should be the same one pushed for a single element.")
-	}
+	t.Run("should pop single item", func(tc *testing.T) {
+		s := NewStack()
+		s.Push("some value")
+		s1 := s.Pop().(string)
+		if s1 != "some value" {
+			t.Errorf("The popped item should be the same one pushed for a single element.")
+		}
+	})
+	
+	t.Run("should pop the last item when there are multiple items on the stack", func(tc *testing.T) {
+		s := NewStack()
+		s.Push("first element")
+		s.Push("second element")
+		s.Push("third element")
 
-	// If multiple items are pushed, the last one should be popped first
-	s.Push("first element")
-	s.Push("second element")
-	s.Push("third element")
-
-	s2 := s.Pop().(string)
-	if s2 != "third element" {
-		t.Errorf("The last element put on the stack should be the first off.")
-	}
+		s2 := s.Pop().(string)
+		if s2 != "third element" {
+			t.Errorf("The last element put on the stack should be the first off.")
+		}
+	})
 }
 
 // assertPanic: recovers from a panic with an error message if there was no panic
