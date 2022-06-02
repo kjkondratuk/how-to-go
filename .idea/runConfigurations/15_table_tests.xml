@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="15_table_tests" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="how-to-go" />
+    <working_directory value="$PROJECT_DIR$/examples/15_table_tests/stack" />
+    <root_directory value="$PROJECT_DIR$/examples/15_table_tests" />
+    <kind value="PACKAGE" />
+    <package value="github.com/kjkondratuk/how-to-go/examples/15_table_tests/stack" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>

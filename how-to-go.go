@@ -18,6 +18,7 @@ const (
 func main() {
 	b, _ := os.ReadFile(".env")
 	key := string(b)
+
 	// ignore the program invocation, but read all the other arguments
 	// TODO : determine what code here should be part of the "skeleton"
 	if len(os.Args[1:]) == 3 {
