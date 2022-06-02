@@ -15,8 +15,9 @@ const (
 
 func main() {
 	// Read our API key from the .env file
-	b, _ := os.ReadFile(".env")
-	apiKey := string(b)
+	// *** Uncomment these lines to start building ***
+	//b, _ := os.ReadFile(".env")
+	//apiKey := string(b)
 
 	// ignore the program invocation, but read all the other arguments
 	appArgs := os.Args[1:]
